@@ -1,5 +1,7 @@
 # Toolbox frontend challenge
 
+<img src="public/react-bs.jpeg" alt="React and Bootstrap">
+
 This repository responds to the Toolbox frontend challenge. The main technologies being used are:
 
 - Vite JS to start the project.
