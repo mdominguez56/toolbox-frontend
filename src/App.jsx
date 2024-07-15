@@ -11,13 +11,11 @@ const App = () => {
       .catch(error => console.error('Error fetching data:', error));
   }, []);
 
-  console.log("pepe1:", data);
-
   return (
     <div>
       <Navbar bg="danger" variant="dark" className="mb-4">
         <Container>
-          <Navbar.Brand>React Test App</Navbar.Brand>
+          <Navbar.Brand>Toolbox Frontend Challenge</Navbar.Brand>
         </Container>
       </Navbar>
       <Container>
