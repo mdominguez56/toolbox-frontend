@@ -20,6 +20,10 @@ npm install
 
 ## Usage
 
+### Important
+
+- In order to view the data in the table, you must have the backend running on **port 5000**.
+
 ```python
 # run project
 npm run dev
