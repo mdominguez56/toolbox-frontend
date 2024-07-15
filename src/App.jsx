@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Table, Navbar } from 'react-bootstrap';
-import axios from 'axios';
+import { fetchData } from './services/api';
 
 const App = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/files/data')
-      .then(response => setData(response.data))
+    fetchData()
+      .then(data => setData(data))
       .catch(error => console.error('Error fetching data:', error));
   }, []);
 
