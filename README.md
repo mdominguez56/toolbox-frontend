@@ -37,3 +37,9 @@ npm test
 
 - Unit test with Jest
 - Search function by fileName
+
+## Screenshot
+
+In case everything is working fine, you should be able to see this in the frontend:
+
+<img src="public/demo.png" alt="Demo screenshot">
