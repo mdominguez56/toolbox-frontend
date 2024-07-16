@@ -12,7 +12,7 @@ This repository responds to the Toolbox frontend challenge. The main technologie
 
 ### Important
 
-- In order to view the data in the table, you must have the backend running on **port 5000**.
+- In order to view the data in the table, you must have the [backend](https://github.com/mdominguez56/toolbox-backend) running on **port 5000**.
 
 ## Installation
 
