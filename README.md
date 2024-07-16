@@ -10,6 +10,10 @@ This repository responds to the Toolbox frontend challenge. The main technologie
 - Axios
 - Jest
 
+### Important
+
+- In order to view the data in the table, you must have the backend running on **port 5000**.
+
 ## Installation
 
 To run this project, you will need to execute the following commands:
@@ -19,10 +23,6 @@ npm install
 ```
 
 ## Usage
-
-### Important
-
-- In order to view the data in the table, you must have the backend running on **port 5000**.
 
 ```python
 # run project
