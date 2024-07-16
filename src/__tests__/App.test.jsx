@@ -3,6 +3,7 @@ import { render, waitFor, screen } from '@testing-library/react';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import App from '../App';
+import { act } from 'react'; // Importar act desde react
 
 const mock = new MockAdapter(axios);
 
@@ -23,7 +24,9 @@ describe('App component tests cases', () => {
 
     mock.onGet('http://localhost:5000/files/data').reply(200, data);
 
-    render(<App />);
+    await act(async () => {
+      render(<App />);
+    });
 
     await waitFor(() => expect(screen.getByText('file1.csv')).toBeInTheDocument());
     expect(screen.getByText('RgTya')).toBeInTheDocument();
@@ -43,7 +46,9 @@ describe('App component tests cases', () => {
 
     mock.onGet('http://localhost:5000/files/data').reply(200, data);
 
-    render(<App />);
+    await act(async () => {
+      render(<App />);
+    });
 
     await waitFor(() => expect(screen.getByText('file1.csv')).toBeInTheDocument());
 
