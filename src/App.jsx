@@ -1,23 +1,49 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Table, Navbar } from 'react-bootstrap';
+import { Container, Table, Navbar, Alert } from 'react-bootstrap';
 import { fetchData } from './services/api';
 import Loader from './components/Loader';
+import SearchBar from './components/SearchBar';
 
 const App = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [emptyFileMessage, setEmptyFileMessage] = useState('');
 
   useEffect(() => {
     fetchData()
       .then(data => {
         setData(data);
         setLoading(false);
+        if (data.length === 0) {
+          setError('No files found.');
+        }
       })
-      .catch(error => {
-        console.error('Error fetching data:', error);
+      .catch(() => {
+        setError('No files found.');
         setLoading(false);
       });
   }, []);
+
+  const handleSearch = (fileName) => {
+    setLoading(true);
+    setError(null);
+    setEmptyFileMessage('');
+    fetchData(fileName)
+      .then(data => {
+        setData(data);
+        setLoading(false);
+        if (data.length === 0) {
+          setError('No files found.');
+        } else if (data.length === 1 && data[0].lines.length === 0) {
+          setEmptyFileMessage(`The file ${data[0].file} has no data.`);
+        }
+      })
+      .catch(() => {
+        setError('No files found.');
+        setLoading(false);
+      });
+  };
 
   return (
     <div>
@@ -27,8 +53,21 @@ const App = () => {
         </Container>
       </Navbar>
       <Container>
+        <div style={{ marginBottom: '30px' }}>
+          <SearchBar onSearch={handleSearch} />
+        </div>
         {loading ? (
-          <Loader />
+          <div className="d-flex justify-content-center align-items-center" style={{ height: '50vh' }}>
+            <Loader />
+          </div>
+        ) : error ? (
+          <div className="d-flex justify-content-center align-items-center" style={{ height: '50vh' }}>
+            <Alert variant="danger">{error}</Alert>
+          </div>
+        ) : emptyFileMessage ? (
+          <div className="d-flex justify-content-center align-items-center" style={{ height: '50vh' }}>
+            <Alert variant="warning">{emptyFileMessage}</Alert>
+          </div>
         ) : (
           <Table striped bordered hover>
             <thead>

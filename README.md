@@ -19,6 +19,7 @@ This repository responds to the Toolbox frontend challenge. The main technologie
 To run this project, you will need to execute the following commands:
 
 ```bash
+nvm use
 npm install
 ```
 
@@ -31,3 +32,8 @@ npm run dev
 # run unit test
 npm test
 ```
+
+## Extra features
+
+- Unit test with Jest
+- Search function by fileName
